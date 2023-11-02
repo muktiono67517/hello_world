@@ -9,6 +9,9 @@ use DB;
 class Controller{
 
     public function login_view(){
+        if (session()->has('username')) {
+            return redirect()->route('dashboard');
+        }
         return view('login');
     }
 
@@ -20,11 +23,12 @@ class Controller{
         $sql_login_query = "SELECT username FROM users WHERE username='$username' AND password='$password' ";
         $users = DB::select($sql_login_query);
         if ($users){
+            $request->session()->put('username',$username);
             return redirect('dashboard');
         }
 
         else if(!$users) {
-            return view('login');
+            return view('login')->with('error_message','Email atau password salah !!!');
         }   
     }
 
@@ -45,9 +49,17 @@ class Controller{
           
     }
     
+    
+
+
+
 
     public function dashboard() {
-        return view('dashboard');
+
+        if (session()->has('username')) {
+            return view('dashboard');
+        }
+        return redirect()->route('login');
     }
 
     public function index(){
@@ -55,5 +67,9 @@ class Controller{
     }
 
 
+   public function logout(){
+        session()->forget('username');
+        return redirect()->route('login');
+   }
 
 }

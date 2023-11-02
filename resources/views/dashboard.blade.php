@@ -53,7 +53,7 @@
                         <span class="material-symbols-outlined">group</span>
                         <h3>employee</h3>
                     </a></li>
-                    <li><a href="">
+                    <li><a href="{{url('/logout')}}">
                         <span class="material-symbols-outlined">logout</span>
                         <h3>logout</h3>
                     </a></li>
@@ -68,7 +68,7 @@
                         <img src="../images/image-1.jpg" alt="">
                     </div>
                     <h3>
-                        good day, <span class="username-profile">hecky</span>!
+                        good day, <span class="username-profile">{{ session('username') }}</span>
                     </h3>
                 </div>
             </div>

@@ -22,6 +22,7 @@ Route::get('/login', function() {
 );
 
 
+Route::get('/session/makesession', [Controller::class, 'buatSession'])->name('MakeSession');
 
 
 
@@ -32,3 +33,7 @@ Route::post('/register', [Controller::class, 'register_auth'])->name('register')
 
 
 Route::get('/dashboard', [Controller::class, 'dashboard'])->name('dashboard');
+
+
+// logout
+Route::get('/logout', [Controller::class, 'logout'])->name('logout');

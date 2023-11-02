@@ -18,15 +18,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 </head>
 <body>
-
-   
-         <div class="alert alert-success alert-dismissable" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="close">
-               <span aria-hidden="true">x</span>
-            </button>
-     
-         </div>
-
     <!-- Login Page Start -->
 
     <section class="login-page">
@@ -43,6 +34,13 @@
                         <i class="fa-solid fa-lock"></i>
                         <input type="password" required="" class="input-bar" placeholder="password" name="password">
                     </div>
+
+                    @if(isset($error_message))
+                        <p style="color:red;">{{$error_message}}</p>
+                    @endif
+                    <!-- css -->
+
+
                     <button class="submit">
                         login
                     </button>
